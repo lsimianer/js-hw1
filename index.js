@@ -1,4 +1,4 @@
-var wordbank = 
+var selectableWords = 
 ["tibia",
 "ankle",
 "femur",
@@ -62,8 +62,8 @@ function updateDisplay(){
     document.getElementById("remainingGuesses").innerText = remainingGuesses;
     document.getElementById("guessedLetters").innerText = guessedLetters;
     if(remainingGuesses <= 0){
-        document.getElementById("gameOver-Image").style.cssText = "display:block";
-        document.getElementById("pressKeyTryAgain").style.cssText = "display:block";
+        document.getElementById("gameOver-Image").style.display = 'block';
+        document.getElementById("pressKeyTryAgain").style.display = 'block';
         hasFinished = true;
     }
 };
@@ -71,7 +71,7 @@ function updateDisplay(){
 
 //update with images
 function updateHangmanImage() {
-    document.getElementById("hangmanImage").src = "assets/images/" + (maxTries - remainingGuesses) + ".png";
+    document.getElementById("hangmanImage").src = "https://i.ibb.co/Pr65Kc0/Logo-Makr-3bkxi-P.png" + (maxTries - remainingGuesses) + ".png";
 };
 
 // capture keystrokes
@@ -83,12 +83,53 @@ document.onkeydown = function(event){
     } else {
         //make sure a-z was pressed
         if(event.keyCode >= 65 && event.keyCode <= 90){
-            makeGuess(event.key.toLocaleLowerCase());
+            makeGuess(event.key.toLowerCase());
         }
     }
 };
 // 65 is the ky code for "a" 90 is the keycode for "z". this keeps make
 //guess from firing unless an a through z input was made.
+function makeGuess(letter) {
+    if (remainingGuesses > 0) {
+        if (!gameStarted) {
+            gamestarted = true;
+        }
+        if(guessedLetters.indexOf(letter) === -1){
+            guessedLetters.push(letter);
+            evaluateGuess(letter);
+        }
+    }
+    updateDisplay();
+    checkWin();
+    
+};
+
+function evaluateGuess(letter){
+    var positions =[];
+    for (var i = 0; i < selectableWords[currentWordIndex].length; i++){
+        if(selectableWords[currentWordIndex][i] === letter){
+            positions.push(i);
+        }
+    }
+    if(positions.length <= 0){
+        remainingGuesses--;
+        updateHangmanImage();
+    } else{
+        for (var i = 0; i < positions.length; i++) {
+            guessingWord[positions[i]] = letter;
+        }
+    }
+};
+
+function checkWin() {
+    if (guessingWord.indexOf("_") === -1) {
+        document.getElementById("youWin-Image").src= "https://i.ibb.co/rFwwpZn/Logo-Makr-4-FVm3i.png" + ".png";
+        document.getElementById("pressKeyTryAgain").style.display = 'block';
+        wins++;
+        hasFinished = true;
+    }
+};
+
 
 
 
