@@ -20,24 +20,28 @@
     
     <div class="game-container">
         <div class="row">
-            <div class="screen">
-                    <div class="col-md-6 gameplay-column">
+            
+                    <div id="screen" class="col-md-6 gameplay-column">
                         <img id="youWin-image" src="https://i.ibb.co/rFwwpZn/Logo-Makr-4-FVm3i.png" alt="Logo-Makr-4-FVm3i">
                         <img id="gameOver-image" src="https://i.ibb.co/gZxBBSr/Logo-Makr-4i4-IDm.png" alt="Logo-Makr-4i4-IDm">
                         <h2 id="pressKeyTryAgain">Press any key to try again!</h2>
                         <img id="hangmanImage" src="https://i.ibb.co/Pr65Kc0/Logo-Makr-3bkxi-P.png" alt="Logo-Makr-3bkxi-P">
                     </div>
-            </div>
+            
             <div class="col-md-6 gameplay-column">
-                <h2>Press any key to start</h2>
-                <h4>Wins</h4>
-                <h5 id="totalWins"></h5>
-                <h4>Current currentWord</h4>
-                <h3 id="currentWord"></h3>
-                <h4>Guess Remaining</h4>
-                <h6 id="remainingGuesses"></h6>
-                <h4>Letters Guessed</h4>
-                <h3 id="guessedLetters"></h3>
+                <button id="btn" onclick=" resetGame(); ">New Game</button> 
+                <p>Press any key to start
+                    <br>
+                    Press new game when youve won, I'll keep score!
+                </p>
+                <p>Wins</p>
+                <p id="totalWins"></p>
+                <p>Current currentWord</p>
+                <p id="currentWord"></p>
+                <p>Guess Remaining</p>
+                <p id="remainingGuesses"></p>
+                <p>Letters Guessed</p>
+                <p id="guessedLetters"></p>
             </div>
         </div>
     </div>

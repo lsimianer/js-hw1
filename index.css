@@ -18,15 +18,23 @@ body {
 
 }
 
-h1, h2, h3, h4, h5, h6 {
+p {
     padding: 5px;
-    background-color: darkgoldenrod;
+    background-color: rgb(1, 68, 10);
+    color:white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
+ 
+#pressKeyTryAgain{
+    background: black;
+    color: darkred;
+    
+}
 
-#title-image, #gameover-image, #youwin-image{ 
-    display: block;
-    margin: 0 auto;
+
+#gameOver-image, #youWin-image{ 
+    z-index: 101;
 }
 
 #currentWord {
@@ -38,14 +46,29 @@ h1, h2, h3, h4, h5, h6 {
 #youwin-image { display: none;}
 .gameplay-column {
     padding-top: 20px;
-    border: 3px dashed #fff;
+    border: 3px dashed goldenrod;
     text-align: center;
     margin-top: 20px;
     min-height: 200px;
     background-color: rgba(0, 0, 0, 0.185);
 }
-.screen{
-    margin-left: 12%;
-    margin-right: 12%;
-    height: 30%;
+#screen{
+    width: 25%;
+    height: 36%;
+    margin-left: 38%;
+    border: 5px groove goldenrod;
+    
 }
+
+@keyframes bg {
+    from {visibility: hidden;}
+    to {visibility: visible;}
+    
+    
+}
+
+#hangmanImage {    
+    width: 200px;
+    height: 200px;
+}
+

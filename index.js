@@ -21,6 +21,16 @@ var wins = 0;
 
 // Game logic, word bank array, and global data needed listed above ^^
 
+
+
+function startGame(){
+    document.getElementById('IntroScreen').style.display= 'none';
+}
+
+function replay(){
+    document.getElementById('endScreen').style.display = 'none';
+}
+
 // reset game level variables
 
 function resetGame() {
@@ -34,8 +44,18 @@ function resetGame() {
     // clear arrays
     guessedLetters = [];
     guessingWord = [];
-// clear image
-    document.getElementById("hangmanImage").src ="#";
+// clear image     // shits broken, how do I fade the image, how do I keep it fading psuedo > function = fade in, fade out, repeat, hover affects (in css)??
+    document.getElementById("hangmanImage").src ="https://i.ibb.co/Pr65Kc0/Logo-Makr-3bkxi-P.png";
+
+  // onkeydown.getElementById("hangmanImage").src ="https://i.ibb.co/Pr65Kc0/Logo-Makr-3bkxi-P.png";
+
+        // button to get new word or start next game
+
+
+
+         //   document.getElementById("btn").onclick = resetGame();
+   
+
 //build guessing word and clear it
 for (var i = 0; i < selectableWords[currentWordIndex].length; i++) {
     guessingWord.push("_");
@@ -109,11 +129,14 @@ function evaluateGuess(letter){
     for (var i = 0; i < selectableWords[currentWordIndex].length; i++){
         if(selectableWords[currentWordIndex][i] === letter){
             positions.push(i);
+            document.getElementById("pressKeyTryAgain").style.cssText= "display:none";
+
         }
     }
     if(positions.length <= 0){
         remainingGuesses--;
-        updateHangmanImage();
+        document.getElementById("pressKeyTryAgain").style.cssText= "display:block";
+        
     } else{
         for (var i = 0; i < positions.length; i++) {
             guessingWord[positions[i]] = letter;
@@ -123,9 +146,11 @@ function evaluateGuess(letter){
 
 function checkWin() {
     if (guessingWord.indexOf("_") === -1) {
-        document.getElementById("youWin-Image").src= "https://i.ibb.co/rFwwpZn/Logo-Makr-4-FVm3i.png" + ".png";
-        document.getElementById("pressKeyTryAgain").style.display = 'block';
         wins++;
+        document.getElementById("youWin-Image").src= "https://i.ibb.co/rFwwpZn/Logo-Makr-4-FVm3i.png" + ".png";
+       
+        document.getElementById("youWin-image").style.display= ' block';
+
         hasFinished = true;
     }
 };
