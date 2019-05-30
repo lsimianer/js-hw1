@@ -29,11 +29,16 @@ function startGame(){
 //attempt to make div fill btns
 var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
+    div_guessedLetters;
+    div_puzzle; 
+    div_available; 
+
 //start game
 function initializeGame(){
-    div_used = document.getElementById('guessedLetters');
+    div_guessedLetters = document.getElementById('guessedLetters');
     div_puzzle = document.getElementById('currentWord');
     div_available = document.getElementById('available');
+    
     
     for(var i=0; i < alphabet.length; i++){
         var l = document.createElement('div');
