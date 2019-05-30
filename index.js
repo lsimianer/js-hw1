@@ -98,6 +98,7 @@ function updateHangmanImage() {
 document.onkeydown = function(event){
     //dump keystroke if game finished and reset
     if(hasFinished) {
+        checkWin();
         resetGame();
         hasFinished = false;
     } else {
@@ -147,7 +148,10 @@ function evaluateGuess(letter){
 function checkWin() {
     if (guessingWord.indexOf("_") === -1) {
         wins++;
-        document.getElementById("youWin-Image").src= "https://i.ibb.co/rFwwpZn/Logo-Makr-4-FVm3i.png" + ".png";
+        currentWordIndex = Math.floor(Math.random() * (selectableWords.length));
+        console.log("checkwin fx ran "+ currentWordIndex)
+
+        // document.getElementById("youWin-Image").src= "https://i.ibb.co/rFwwpZn/Logo-Makr-4-FVm3i.png" + ".png";
        
         document.getElementById("youWin-image").style.display= ' block';
 
