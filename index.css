@@ -72,3 +72,15 @@ p {
     height: 200px;
 }
 
+button {
+    border-radius: 7px;
+    background-color: darkgreen;
+    border-color: goldenrod;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 155px;
+    height: 40px;
+
+}
+
